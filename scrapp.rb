@@ -45,13 +45,20 @@ class MyFreckle
     doc.xpath('//*[@id="billable_table"]/tbody[contains(@id, "entries-body")]/tr').each do |project|
       next if project.at_xpath(".//span[@class='project-name']").nil?
 
-      name  = project.at_xpath(".//span[@class='project-name']").text
-      user  = project.at_xpath(".//td[@class='user wide']/a/span").text
+      name  = project.at_xpath(".//span[@class='project-name']").text.to_s.downcase
+      user  = project.at_xpath(".//td[@class='user wide']/a/span").text.to_s.downcase
+      firstname = user.to_s.split(' ').first
       minutes  = project.at_xpath(".//td[@class='minutes time']/span[@class='raw-format hidden']").text
+      hours = (minutes.to_f / 60.0 * 100.0).round / 100.0
+      days = (hours / 8.0 * 100.0).round / 100.0
 
-      p << {project: name, user: user, minutes: minutes}
+      p << {project: name, user: user, firstname: firstname, minutes: minutes, hours: hours, days: days}
     end
 
-    p.group_by {|b| b[:project]}
+    response = {}
+    p.group_by {|b| b[:firstname]}.each do |name, details|
+      response[name] = details.group_by {|d| d[:project] }
+    end
+    response
   end
 end
