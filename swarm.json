@@ -1,0 +1,23 @@
+{
+  "app_name": "frecklereports-app",
+  "services": [
+    {
+      "service_name": "frecklereports-service",
+      "components": [
+        {
+          "component_name": "freckle-component",
+          "image": "registry.giantswarm.io/bumi/frecklereports",
+          "ports": ["9292/tcp"],
+          "env": [
+            "EMAIL=$email",
+            "PASSWORD=$password",
+            "SUBDOMAIN=$subdomain"
+          ],
+          "domains": {
+            "frecklereports-bumi.gigantic.io": "9292"
+          }
+        }
+      ]
+    }
+  ]
+}

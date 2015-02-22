@@ -1,0 +1,7 @@
+{
+  "bumi/dev": {
+    "email": "you@railslove.com",
+    "password": "password",
+    "subdomain": "railslove"
+  }
+}
