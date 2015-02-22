@@ -11,7 +11,7 @@ require './scrapp'
 
 class Web < Sinatra::Base
 
-  get "/:year/:month" do
+  get "/qfwx8g6afhk3/:year/:month" do
     from = Date.parse("#{params[:year]}-#{params[:month].rjust(2, "0")}-01")
     to   = from.end_of_month
 
