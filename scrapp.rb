@@ -42,7 +42,7 @@ class MyFreckle
     doc = Nokogiri::HTML(File.open("reports-#{@from}.html"))
 
     p = []
-    doc.xpath('//*[@id="billable_table"]/tbody[contains(@id, "entries-body")]/tr').each do |project|
+    doc.xpath('//*[@id="billable_table"]/tbody/tr[contains(@id, "entry")]').each do |project|
       next if project.at_xpath(".//span[@class='project-name']").nil?
 
       name  = project.at_xpath(".//span[@class='project-name']").text.to_s.downcase
