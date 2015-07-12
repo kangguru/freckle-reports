@@ -14,7 +14,8 @@
             "SUBDOMAIN=$subdomain"
           ],
           "domains": {
-            "frecklereports-bumi.gigantic.io": "9292"
+            "frecklereports-bumi.gigantic.io": "9292",
+            "frecklereports.railslove.com": "9292"
           }
         }
       ]
